@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a sorting program that can handle insertion sort, selection sort, merge sort, and quick sort.
+This is a sorting program that sorts colored lines based on height. This program can handle insertion sort, selection sort, merge sort, and quick sort. In the future, I hope to include more sorting algorithms.
 
 ## Getting Started
 
