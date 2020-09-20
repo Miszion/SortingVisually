@@ -302,12 +302,8 @@ public class Frame extends JFrame {
         f.setVisible(true);
 
         //f.mergeSort(f.getLineList(), 0, f.getLineList().size() - 1);
-
         //f.insertionSort();
         //f.selectionSort();
-        //f.repaint();
-        //f.validate();
-
         //f.quickSort(f.getLineList(), 0, f.getLineList().size() - 1);
 
     }
