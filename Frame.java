@@ -1,81 +1,31 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.net.Inet4Address;
 import java.util.ArrayList;
 
 public class Frame extends JFrame {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     public ArrayList<Line> lineList;
     static int comparisons = 0;
-    private JButton quickSort;
-    private JButton mergeSort;
-    private JButton insertionSort;
-    private JButton selectionSort;
     private JLabel welcome;
-    private JPanel buttonView;
 
     public Frame() {
 
             welcome = new JLabel("Please select a sorting algorithm:");
-            quickSort = new JButton("Quick Sort");
-            mergeSort = new JButton("Merge Sort");
-            insertionSort = new JButton("Insertion Sort");
-            selectionSort = new JButton("Selection Sort");
-
-            buttonView = new JPanel();
-
-            buttonView.setLayout(new BorderLayout());
             JPanel topPane = new JPanel();
             topPane.setLayout(new BorderLayout());
             topPane.add(welcome, BorderLayout.CENTER);
 
-            JPanel bottomPane = new JPanel();
-            bottomPane.setLayout(new GridLayout(2, 2));
-            bottomPane.add(quickSort);
-            bottomPane.add(mergeSort);
-            bottomPane.add(insertionSort);
-            bottomPane.add(selectionSort);
-
-            quickSort.addActionListener(new ButtonListener(this));
-
-            buttonView.add(topPane, BorderLayout.PAGE_START);
-            buttonView.add(bottomPane, BorderLayout.CENTER);
-
-            this.lineList = lineList;
 
             lineList = new ArrayList<Line>();
             populateArrayRandom(lineList);
             this.getContentPane().add(new DrawingPane(lineList), BorderLayout.CENTER);
-            this.getContentPane().add(buttonView, BorderLayout.PAGE_END);
-            //this.getContentPane().add(buttonView);
             this.setSize(1500, 1000);
             this.setBackground(Color.BLACK);
     }
-
-    private class ButtonListener implements ActionListener {
-
-        private Frame current;
-
-        private ButtonListener(Frame current) {
-            this.current = current;
-        }
-
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-
-            JButton buttonClicked = (JButton)e.getSource();
-
-            if (buttonClicked.getText().equals("Quick Sort")) {
-                this.current.quickSort(current.getLineList(), 0, current.getLineList().size() - 1);
-                //Frame.shuffleArray(this.current.getLineList());
-            }
-
-        }
-    }
-
 
 
     void merge(ArrayList<Line> lineList, int l, int m, int r)
@@ -214,7 +164,7 @@ public class Frame extends JFrame {
 
 
 
-    public static void populateArrayRandom(ArrayList<Line> lineList) {
+    public void populateArrayRandom(ArrayList<Line> lineList) {
 
 
         for (int x = 0; x < 750; x++) {
@@ -255,7 +205,7 @@ public class Frame extends JFrame {
 
         }
 
-        shuffleArray(lineList);
+        this.shuffleArray(lineList);
 
     }
 
@@ -303,13 +253,16 @@ public class Frame extends JFrame {
         return i+1;
     }
 
-    static void shuffleArray(ArrayList<Line> lineList) {
+    public void shuffleArray(ArrayList<Line> lineList) {
 
         for (int x = lineList.size() - 1; x > 0; x--) {
             int random = (int)Math.floor((int)(Math.random() * (x+1)));
             Line temp = lineList.get(x);
             lineList.set(x, lineList.get(random));
             lineList.set(random, temp);
+
+            this.revalidate();
+            this.repaint();
         }
     }
 
@@ -348,8 +301,7 @@ public class Frame extends JFrame {
         f.setPreferredSize(new Dimension(1920, 1080));
         f.setVisible(true);
 
-
-        f.mergeSort(f.getLineList(), 0, f.getLineList().size() - 1);
+        //f.mergeSort(f.getLineList(), 0, f.getLineList().size() - 1);
 
         //f.insertionSort();
         //f.selectionSort();

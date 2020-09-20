@@ -4,6 +4,10 @@ import java.util.ArrayList;
 
 public class DrawingPane extends JPanel {
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
     public ArrayList<Line> lineList;
 
     public DrawingPane(ArrayList<Line> lineList) {
@@ -14,7 +18,7 @@ public class DrawingPane extends JPanel {
     }
 
     public void paintComponent(Graphics g) {
-
+        
         super.paintComponent(g);
 
         int xValue = 0;
@@ -28,7 +32,6 @@ public class DrawingPane extends JPanel {
 
             //make the assumption that all lines start at x = 0, y = 0 and stay two pixels apart (depending on length will depend on y value)
 
-            System.out.println();
             g.setColor(c);
             g.drawLine(xValue, yValue, xValue, yValue + length);
 
